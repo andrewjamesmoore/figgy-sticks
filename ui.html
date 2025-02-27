@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Inter, sans-serif;
+        margin: 0;
+        padding: 16px;
+        background-color: #2c2c2c;
+        color: #ffffff;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .note-input-container {
+        position: relative;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #3c3c3c;
+        margin-bottom: 16px;
+      }
+
+      .note-input {
+        width: 100%;
+        min-height: 100px;
+        padding: 12px;
+        padding-bottom: 24px;
+        margin-bottom: 40px;
+        border: none;
+        background-color: #3c3c3c;
+        color: white;
+        font-family: Inter, sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+        resize: none;
+        overflow: hidden;
+      }
+
+      .note-input:focus {
+        outline: none;
+      }
+
+      .note-input-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-top: 1px solid #444;
+        background-color: #3c3c3c;
+        height: 40px;
+      }
+
+      .send-button {
+        background-color: #4f9bff;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        transition: background-color 0.2s;
+      }
+
+      .send-button:hover {
+        background-color: #347bd2;
+      }
+
+      .send-button svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .color-section {
+        margin-bottom: 16px;
+      }
+
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-bottom: 16px;
+        background-color: #3c3c3c;
+        padding: 12px;
+        border-radius: 8px;
+      }
+
+      .color-swatch {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        box-sizing: border-box;
+        margin: 4px;
+      }
+
+      .color-swatch.selected {
+        border: solid 2px #3c3c3c;
+        box-shadow: 0 0 0 3px #ffffff;
+      }
+
+      .author-display {
+        color: rgba(180, 180, 180, 0.5);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <label>Add a note</label>
+    <div class="note-input-container">
+      <textarea id="note-text" class="note-input" placeholder="Note"></textarea>
+      <div class="note-input-actions">
+        <div id="shortcut-display" class="author-display">⌘ + Enter</div>
+        <button id="add-note" class="send-button" title="Add Note">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 3.33333V12.6667"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12.6667 8L8.00001 3.33333L3.33334 8"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="color-section">
+      <div class="color-label">
+        <label>Select color</label>
+      </div>
+
+      <div class="color-grid">
+        <!-- Row 1 -->
+        <div
+          class="color-swatch selected"
+          style="background-color: #ffffff"
+          data-color="1,1,1"
+          data-hex="#ffffff"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #e0e0e0"
+          data-color="0.88,0.88,0.88"
+          data-hex="#e0e0e0"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #f8c3c3"
+          data-color="0.97,0.76,0.76"
+          data-hex="#f8c3c3"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #f8d8c3"
+          data-color="0.97,0.85,0.76"
+          data-hex="#f8d8c3"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #f8efc3"
+          data-color="0.97,0.94,0.76"
+          data-hex="#f8efc3"
+        ></div>
+        <!-- Row 2 -->
+        <div
+          class="color-swatch"
+          style="background-color: #c3f8c3"
+          data-color="0.76,0.97,0.76"
+          data-hex="#c3f8c3"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #c3f8f8"
+          data-color="0.76,0.97,0.97"
+          data-hex="#c3f8f8"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #c3d8f8"
+          data-color="0.76,0.85,0.97"
+          data-hex="#c3d8f8"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #d8c3f8"
+          data-color="0.85,0.76,0.97"
+          data-hex="#d8c3f8"
+        ></div>
+        <div
+          class="color-swatch"
+          style="background-color: #f8c3f8"
+          data-color="0.97,0.76,0.97"
+          data-hex="#f8c3f8"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      function autoResizeTextarea(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+
+        updateUIHeight();
+      }
+
+      function updateUIHeight() {
+        const height = document.body.scrollHeight;
+        parent.postMessage({ pluginMessage: { type: "resize", height } }, "*");
+      }
+
+      const noteTextarea = document.getElementById("note-text");
+
+      noteTextarea.addEventListener("input", function () {
+        autoResizeTextarea(this);
+      });
+
+      autoResizeTextarea(noteTextarea);
+
+      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+      document.getElementById("shortcut-display").textContent = isMac
+        ? "⌘ + Enter"
+        : "Ctrl + Enter";
+
+      window.onmessage = (event) => {
+        const message = event.data.pluginMessage;
+        if (message && message.type === "note-created") {
+          console.log("Received confirmation that note was created:", message);
+        }
+      };
+
+      window.addEventListener("load", updateUIHeight);
+      window.addEventListener("resize", updateUIHeight);
+
+      let selectedColor = "1,1,1";
+      let selectedHex = "#ffffff";
+
+      document.querySelectorAll(".color-swatch").forEach((swatch) => {
+        swatch.addEventListener("click", () => {
+          document.querySelectorAll(".color-swatch").forEach((s) => {
+            s.classList.remove("selected");
+          });
+
+          swatch.classList.add("selected");
+
+          selectedColor = swatch.getAttribute("data-color");
+        });
+      });
+
+      function createNote() {
+        try {
+          const noteText = document.getElementById("note-text").value;
+
+          console.log("Creating note with:", {
+            color: selectedColor,
+            text: noteText,
+          });
+
+          const message = {
+            type: "create-sticky-note",
+            color: selectedColor,
+            text: noteText,
+          };
+
+          parent.postMessage(
+            {
+              pluginMessage: message,
+            },
+            "*"
+          );
+
+          const textarea = document.getElementById("note-text");
+          textarea.value = "";
+          textarea.style.height = "80px";
+
+          updateUIHeight();
+
+          console.log("Message sent to create note:", message);
+
+          const addButton = document.getElementById("add-note");
+          const originalColor = addButton.style.backgroundColor;
+          addButton.style.backgroundColor = "#22cc88";
+          setTimeout(() => {
+            addButton.style.backgroundColor = originalColor;
+          }, 500);
+
+          return true;
+        } catch (error) {
+          console.error("Error sending message:", error);
+          alert("Error creating note: " + error.message);
+          return false;
+        }
+      }
+
+      document.getElementById("add-note").addEventListener("click", createNote);
+
+      noteTextarea.addEventListener("keydown", function (event) {
+        if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+          event.preventDefault();
+          createNote();
+        }
+      });
+
+      updateUIHeight();
+    </script>
+  </body>
+</html>
