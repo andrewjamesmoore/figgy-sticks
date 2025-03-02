@@ -1,6 +1,8 @@
 # Figma Sticky Notes Plugin
 
-A simple Figma plugin that allows users to create colorful sticky notes on their design files.
+![Figgy Sticks Banner](static/figgy_banner.png)
+
+Figgy Sticks helps you create vibrant stickies in your Figma design files with ease. A clean UI and handy keyboard shortcuts let you add multiple notes quickly—less clicks, more sticks!
 
 ## Features
 
@@ -12,9 +14,8 @@ A simple Figma plugin that allows users to create colorful sticky notes on their
 
 1. Run the plugin from the Figma plugins menu
 2. Enter your note text in the text area
-3. Enter your name in the author field
-4. Select a color from the color grid
-5. Click the send (up arrow) button to create a note on the canvas
+3. Select a color from the color grid
+4. Click or use the keyboard shortcut to quickly add a note (or multiple)
 
 ## Development
 
@@ -32,6 +33,5 @@ npm run build
 
 ## Installation
 
-1. In Figma, go to Plugins > Development > Import plugin from manifest...
-2. Select the manifest.json file from this project
-# figgy-sticks
+Find it on the Figma Community
+https://www.figma.com/community/plugin/1478109446396282175/figgy-sticks-sticky-notes
