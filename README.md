@@ -1,6 +1,6 @@
 # Figma Sticky Notes Plugin
 
-![Figgy Sticks Banner](static/figgy_banner.png)
+![Figgy Sticks Banner](static/banner.png)
 
 Figgy Sticks helps you create vibrant stickies in your Figma design files with ease. A clean UI and handy keyboard shortcuts let you add multiple notes quickly—less clicks, more sticks!
 
